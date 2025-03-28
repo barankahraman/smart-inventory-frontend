@@ -161,6 +161,25 @@ export default function DashboardManager() {
       </ul>
     </div>
 
+    {/* Actuator Command Button */}
+    <div style={{ marginTop: "30px" }}>
+      <h2>Send Manual Actuator Command</h2>
+      <button
+        onClick={sendActuatorCommand}
+        style={{
+          backgroundColor: "#4CAF50",
+          color: "white",
+          padding: "10px 20px",
+          fontSize: "16px",
+          border: "None",
+          borderRadius: "5px",
+          cursor: "pointer"
+        }}
+      >
+        🚀 Send Command to Pi
+      </button>
+    </div>
+          
       {/* Quit Button */}
       <button 
         onClick={handleQuit} 
