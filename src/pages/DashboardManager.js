@@ -82,7 +82,7 @@ export default function DashboardManager() {
       const response = await fetch(`${API_URL}/api/send-command`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringfly({
+        body: JSON.stringify({
           actuator1,
           actuator2
         }),

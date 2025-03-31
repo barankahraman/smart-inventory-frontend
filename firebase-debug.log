@@ -1,0 +1,51 @@
+[debug] [2025-03-31T19:11:42.609Z] ----------------------------------------------------------------------
+[debug] [2025-03-31T19:11:42.622Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\hakan\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2025-03-31T19:11:42.623Z] CLI Version:   14.0.1
+[debug] [2025-03-31T19:11:42.624Z] Platform:      win32
+[debug] [2025-03-31T19:11:42.624Z] Node Version:  v22.14.0
+[debug] [2025-03-31T19:11:42.625Z] Time:          Mon Mar 31 2025 22:11:42 GMT+0300 (GMT+03:00)
+[debug] [2025-03-31T19:11:42.626Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-03-31T19:11:43.464Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-03-31T19:11:43.476Z] > authorizing via signed-in user (baran9b@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\Users\hakan\smart-inventory-frontend
+
+Before we get started, keep in mind:
+
+  * You are initializing within an existing Firebase project directory
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[debug] [2025-03-31T19:11:51.826Z] Using project from CLI flag: sims-1c9b7
+[debug] [2025-03-31T19:11:51.831Z] Checked if tokens are valid: true, expires at: 1743450919197
+[debug] [2025-03-31T19:11:51.835Z] Checked if tokens are valid: true, expires at: 1743450919197
+[debug] [2025-03-31T19:11:51.840Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/sims-1c9b7 [none]
+[debug] [2025-03-31T19:11:52.673Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/sims-1c9b7 200
+[debug] [2025-03-31T19:11:52.673Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/sims-1c9b7 {"projectId":"sims-1c9b7","projectNumber":"92965187159","displayName":"SIMS","name":"projects/sims-1c9b7","resources":{"hostingSite":"sims-1c9b7"},"state":"ACTIVE","etag":"1_8000e061-ae57-4bde-aa82-d068ac282d3a"}
+[info] i  Using project sims-1c9b7 (SIMS) 
+[info] 
+=== Hosting Setup
+[debug] [2025-03-31T19:11:52.708Z] Checked if tokens are valid: true, expires at: 1743450919197
+[debug] [2025-03-31T19:11:52.708Z] Checked if tokens are valid: true, expires at: 1743450919197
+[debug] [2025-03-31T19:11:52.708Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/sims-1c9b7 [none]
+[debug] [2025-03-31T19:11:53.067Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/sims-1c9b7 200
+[debug] [2025-03-31T19:11:53.067Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/sims-1c9b7 {"projectId":"sims-1c9b7","projectNumber":"92965187159","displayName":"SIMS","name":"projects/sims-1c9b7","resources":{"hostingSite":"sims-1c9b7"},"state":"ACTIVE","etag":"1_8000e061-ae57-4bde-aa82-d068ac282d3a"}
+[info] 
+[info] Your public directory is the folder (relative to your project directory) that
+[info] will contain Hosting assets to be uploaded with firebase deploy. If you
+[info] have a build process for your assets, use your build's output directory.
+[info] 
