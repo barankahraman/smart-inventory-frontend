@@ -83,9 +83,9 @@ export default function DashboardManager() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringfly({
-          actuator1: "ON",
-          actuator2: "OFF"
-        })
+          actuator1,
+          actuator2
+        }),
       })
 
       const result = await response.json();
@@ -96,6 +96,9 @@ export default function DashboardManager() {
       alert("❌ Failed to send actuator command.")
     }
   };
+
+  const [actuator1, setActuator1] = useState("OFF");
+  const [actuator2, setActuator2] = useState("OFF");
 
   return (
     <div style={{ textAlign: 'center', padding: '40px' }}>
@@ -164,6 +167,23 @@ export default function DashboardManager() {
     {/* Actuator Command Button */}
     <div style={{ marginTop: "30px" }}>
       <h2>Send Manual Actuator Command</h2>
+
+      <div style={{ marginBottom: "10px" }}>
+        <label><strong>Actuator 1:</strong>&nbsp;</label>
+        <select value={actuator1} onChange={e => setActuator1(e.Target.value)}>
+          <option value="ON">ON</option>
+          <option value="OFF">OFF</option>
+        </select>
+      </div>
+
+      <div style={{ marginTop: "30px" }}>
+        <label><strong>Actuator 2:</strong>&nbsp;</label>
+        <select value={actuator2} onChange={e => setActurator2(e.Target.value)}>
+          <option value="ON">ON</option>
+          <option value="OFF">OFF</option>
+        </select>
+      </div>
+      
       <button
         onClick={sendActuatorCommand}
         style={{
