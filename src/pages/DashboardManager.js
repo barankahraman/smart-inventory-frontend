@@ -230,7 +230,6 @@ export default function DashboardManager() {
               onChange={(e) => {
                 const value = parseFloat(e.target.value);
                 setThreshold(value);
-                sendModeUpdate("auto", value);
               }}
               style={{
                 marginLeft: "10px",
