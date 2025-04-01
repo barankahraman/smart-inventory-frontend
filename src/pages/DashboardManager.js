@@ -84,89 +84,101 @@ export default function DashboardManager() {
     <div
       style={{
         padding: '20px',
-        maxWidth: '900px',
+        maxWidth: '1000px',
         margin: '0 auto',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        gap: '20px',
         minHeight: '100vh',
-        justifyContent: 'center'
       }}
     >
-      <h1>Manager Dashboard</h1>
-      <p>Manage inventory and view live camera feed:</p>
-
-      {/* Stock Table */}
-      <div style={{ width: '100%' }}>
-        <h2>Stock Inventory</h2>
-        {loading ? (
-          <p>Loading inventory...</p>
-        ) : (
-          <table style={{ margin: 'auto', textAlign: 'left', width: '100%' }}>
-            <thead>
-              <tr>
-                <th>Item</th>
-                <th>Stock</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {items.map((item) => (
-                <tr key={item.name}>
-                  <td>{item.name}</td>
-                  <td>{item.stock}</td>
-                  <td>
-                    <button onClick={() => updateStock(item.name, +1)} style={{ backgroundColor: 'green', color: 'white', margin: '3px' }}>+1</button>
-                    <button onClick={() => updateStock(item.name, -1)} style={{ backgroundColor: 'red', color: 'white', margin: '3px' }}>-1</button>
-                  </td>
+      <h1 style={{ textAlign: 'center' }}>Manager Dashboard</h1>
+      <p style={{ textAlign: 'center' }}>Manage inventory and view live camera feed:</p>
+  
+      {/* Inventory + Camera Side-by-Side */}
+      <div style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: '20px' }}>
+        {/* Inventory */}
+        <div style={{ flex: 1, minWidth: '300px' }}>
+          <h2>Stock Inventory</h2>
+          {loading ? (
+            <p>Loading inventory...</p>
+          ) : (
+            <table style={{ width: '100%', textAlign: 'left' }}>
+              <thead>
+                <tr>
+                  <th>Item</th>
+                  <th>Stock</th>
+                  <th>Actions</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-        )}
+              </thead>
+              <tbody>
+                {items.map((item) => (
+                  <tr key={item.name}>
+                    <td>{item.name}</td>
+                    <td>{item.stock}</td>
+                    <td>
+                      <button
+                        onClick={() => updateStock(item.name, +1)}
+                        style={{ backgroundColor: 'green', color: 'white', margin: '2px' }}
+                      >
+                        +1
+                      </button>
+                      <button
+                        onClick={() => updateStock(item.name, -1)}
+                        style={{ backgroundColor: 'red', color: 'white', margin: '2px' }}
+                      >
+                        -1
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          )}
+        </div>
+  
+        {/* Camera */}
+        <div style={{ flexShrink: 0 }}>
+          <h2>Live Camera</h2>
+          <img
+            src={`${STREAM_URL}/video_feed`}
+            width="320"
+            height="240"
+            alt="Live Stream"
+            style={{ borderRadius: '8px', border: '1px solid #ccc' }}
+          />
+        </div>
       </div>
-
-      {/* Live Camera */}
-      <div>
-        <h2>Live Camera</h2>
-        <img src={`${STREAM_URL}/video_feed`} width="280" height="210" alt="Live Stream" />
-      </div>
-
-      {/* Warehouse Parameters */}
-      <div style={{ textAlign: 'left', width: '100%' }}>
+  
+      {/* Sensor Data */}
+      <div style={{ marginTop: '30px' }}>
         <h2>Warehouse Sensor Data</h2>
         <ul>
           <li><strong>1st Stock Weight:</strong> {stockWeights.weight1} kg</li>
           <li><strong>2nd Stock Weight:</strong> {stockWeights.weight2} kg</li>
           <li><strong>3rd Stock Weight:</strong> {stockWeights.weight3} kg</li>
-          <li><strong>Warehouse Temperature:</strong> {stockWeights.temperature} °C</li>
+          <li><strong>Temperature:</strong> {stockWeights.temperature} °C</li>
         </ul>
       </div>
-
-      {/* Actuator Controls */}
-      <div style={{ width: '100%' }}>
+  
+      {/* Actuator Command */}
+      <div style={{ marginTop: '30px' }}>
         <h2>Send Manual Actuator Command</h2>
-
-        <div style={{ marginBottom: "10px" }}>
+        <div>
           <label><strong>Actuator 1:</strong>&nbsp;</label>
           <select value={actuator1} onChange={(e) => setActuator1(e.target.value)}>
             <option value="ON">ON</option>
             <option value="OFF">OFF</option>
           </select>
         </div>
-
-        <div style={{ marginBottom: "10px" }}>
+        <div style={{ marginTop: '10px' }}>
           <label><strong>Actuator 2:</strong>&nbsp;</label>
           <select value={actuator2} onChange={(e) => setActuator2(e.target.value)}>
             <option value="ON">ON</option>
             <option value="OFF">OFF</option>
           </select>
         </div>
-
         <button
           onClick={sendActuatorCommand}
           style={{
+            marginTop: '15px',
             backgroundColor: "#4CAF50",
             color: "white",
             padding: "10px 20px",
@@ -179,20 +191,24 @@ export default function DashboardManager() {
           🚀 Send Command to Pi
         </button>
       </div>
-
-      {/* Quit */}
-      <button
-        onClick={handleQuit}
-        style={{
-          marginTop: "20px",
-          padding: "10px 20px",
-          background: "blue",
-          color: "white"
-        }}
-      >
-        Quit
-      </button>
+  
+      {/* Quit Button */}
+      <div style={{ textAlign: 'center', marginTop: '30px' }}>
+        <button
+          onClick={handleQuit}
+          style={{
+            padding: "10px 20px",
+            background: "blue",
+            color: "white",
+            fontSize: "16px",
+            borderRadius: "5px"
+          }}
+        >
+          Quit
+        </button>
+      </div>
     </div>
   );
+  
 }
 
