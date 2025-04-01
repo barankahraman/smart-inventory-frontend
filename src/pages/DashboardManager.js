@@ -9,6 +9,9 @@ export default function DashboardManager() {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [actuator, setActuator] = useState("OFF");
+  const [mode, setMode] = useState("manual");
+  const [threshold, setThreshold] = useState(26);
+
 
   const [stockWeights, setStockWeights] = useState({
     weight1: 0,
@@ -74,6 +77,24 @@ export default function DashboardManager() {
       alert("❌ Failed to send actuator command.");
     }
   };
+  
+  const sendModeUpdate = async (newMode, newThreshold = threshold) => {
+    try {
+      await fetch(`${API_URL}/api/mode`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          type: 'mode',
+          mode: newMode,
+          threshold: newMode === 'auto' ? newThreshold : undefined
+        })
+      });
+      console.log("✅ Mode updated on backend:", newMode);
+    } catch (err) {
+      console.error("❌ Failed to update mode:", err);
+    }
+  };
+
 
   const handleQuit = () => {
     navigate('/');
@@ -159,28 +180,97 @@ export default function DashboardManager() {
           <li><strong>Temperature:</strong> {stockWeights.temperature} °C</li>
         </ul>
       </div>
+
+      {/* Mode Selection */}
+      <div style={{ marginTop: "30px", padding: "20px", border: "1px solid #ccc", borderRadius: "10px", maxWidth: "500px" }}>
+        <h2>🧠 Actuator Mode</h2>
+
+        <div style={{ display: "flex", gap: "15px", marginBottom: "10px" }}>
+          <button
+            onClick={() => {
+              setMode("manual");
+              sendModeUpdate("manual");
+            }}
+            style={{
+              backgroundColor: mode === "manual" ? "#2196f3" : "#e0e0e0",
+              color: mode === "manual" ? "white" : "black",
+              padding: "8px 20px",
+              border: "none",
+              borderRadius: "5px",
+              cursor: "pointer"
+            }}
+          >
+            Manual Mode
+          </button>
+
+          <button
+            onClick={() => {
+              setMode("auto");
+              sendModeUpdate("auto", threshold);
+            }}
+            style={{
+              backgroundColor: mode === "auto" ? "#4caf50" : "#e0e0e0",
+              color: mode === "auto" ? "white" : "black",
+              padding: "8px 20px",
+              border: "none",
+              borderRadius: "5px",
+              cursor: "pointer"
+            }}
+          >
+            Auto Mode
+          </button>
+        </div>
+
+        {mode === "auto" && (
+          <div style={{ marginTop: "10px" }}>
+            <label><strong>Temperature Threshold (°C):</strong></label>
+            <input
+              type="number"
+              value={threshold}
+              onChange={(e) => {
+                const value = parseFloat(e.target.value);
+                setThreshold(value);
+                sendModeUpdate("auto", value);
+              }}
+              style={{
+                marginLeft: "10px",
+                padding: "5px",
+                width: "80px",
+                borderRadius: "5px",
+                border: "1px solid #ccc"
+              }}
+            />
+          </div>
+          )}
+
+        <p style={{ marginTop: "10px" }}>
+          <strong>Current Mode:</strong> {mode === "manual" ? "🧍 Manual" : `🤖 Auto (Threshold: ${threshold}°C)`}
+        </p>
+      </div>
+
   
       {/* Actuator Command */}
       <div style={{ marginTop: '30px' }}>
         <h2>Send Manual Actuator Command</h2>
         <div>
-          <label><strong>Actuator 1:</strong>&nbsp;</label>
-          <select value={actuator} onChange={(e) => setActuator(e.target.value)}>
+          <label><strong>Actuator:</strong>&nbsp;</label>
+          <select value={actuator} onChange={(e) => setActuator(e.target.value)} disabled={mode == "auto"}>
             <option value="ON">ON</option>
             <option value="OFF">OFF</option>
           </select>
         </div>
         <button
           onClick={sendActuatorCommand}
+          disabled={mode == "auto"}
           style={{
             marginTop: '15px',
-            backgroundColor: "#4CAF50",
+            backgroundColor: mode === "auto" ? "#999" : "#4CAF50",
             color: "white",
             padding: "10px 20px",
             fontSize: "16px",
             border: "none",
             borderRadius: "5px",
-            cursor: "pointer"
+            cursor: mode === "auto" ? "not-allowed" : "pointer"
           }}
         >
           🚀 Send Command to Pi
