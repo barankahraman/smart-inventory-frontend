@@ -17,10 +17,10 @@ jobs:
           node-version: '18'
 
       - name: Install dependencies
-        run: npm install
+        run: npm install --registry=https://registry.npmjs.org/
 
       - name: Install dependencies
-        run: npm install --registry=https://registry.npmjs.org/
+        run: npm install
 
       - name: Build project
         run: CI='' npm run build
