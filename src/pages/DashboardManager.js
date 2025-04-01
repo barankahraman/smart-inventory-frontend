@@ -11,6 +11,7 @@ export default function DashboardManager() {
   const [actuator, setActuator] = useState("OFF");
   const [mode, setMode] = useState("manual");
   const [threshold, setThreshold] = useState(26);
+  const [saveMessage, setSaveMessage] = useState("");
 
 
   const [stockWeights, setStockWeights] = useState({
@@ -226,11 +227,9 @@ export default function DashboardManager() {
             <label><strong>Temperature Threshold (°C):</strong></label>
             <input
               type="number"
-              value={threshold}
-              onChange={(e) => {
-                const value = parseFloat(e.target.value);
-                setThreshold(value);
-              }}
+              defaultValue={threshold}
+              id = "thresholdInput"
+              placeholder = "Enter new threshold"
               style={{
                 marginLeft: "10px",
                 padding: "5px",
@@ -240,7 +239,23 @@ export default function DashboardManager() {
               }}
             />
             <button
-              onClick={() => sendModeUpdate("auto", threshold)}
+              onClick={() => {
+                const input = document.getElementById("thresholdInput");
+                const newValue = parseFloat(input.value);
+
+                if (!isNan(newValue)) {
+                  setThreshold(newValue);
+                  sendModeUpdate("auto", newValue);
+                  setSaveMessage("✅ Threshold saved!");
+                  input.value = "";
+
+                  setTimeout(() => setSaveMessage(""), 2000);
+                }
+                else {
+                  setSaveMessage("⚠️ Please enter a valid number.");
+                  setTimeout(() => setSaveMessage(""), 2000);
+                }
+              }}
               style={{
                 marginTop: "10px",
                 marginLeft: "10px",
@@ -254,6 +269,9 @@ export default function DashboardManager() {
             >
               ➤ Enter
             </button>
+            <p style={{ marginTop: "8px", color: "white", fontWeight: "bold" }}>
+             {saveMessage}
+            </p>
           </div>
           )}
 
