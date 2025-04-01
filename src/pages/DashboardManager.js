@@ -81,13 +81,17 @@ export default function DashboardManager() {
   };
 
   return (
+    
     <div
-      style={{
-        padding: '20px',
-        maxWidth: '1000px',
-        margin: '0 auto',
-        minHeight: '100vh',
-      }}
+    style={{
+      padding: '20px',
+      maxWidth: '1200px',
+      margin: '0 auto',
+      minHeight: '100vh',
+      maxHeight: '100vh',
+      overflowY: 'auto',
+    }}
+    
     >
       <h1 style={{ textAlign: 'center' }}>Manager Dashboard</h1>
       <p style={{ textAlign: 'center' }}>Manage inventory and view live camera feed:</p>
@@ -139,8 +143,8 @@ export default function DashboardManager() {
           <h2>Live Camera</h2>
           <img
             src={`${STREAM_URL}/video_feed`}
-            width="320"
-            height="240"
+            width="620"
+            height="480"
             alt="Live Stream"
             style={{ borderRadius: '8px', border: '1px solid #ccc' }}
           />
