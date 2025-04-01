@@ -170,7 +170,7 @@ export default function DashboardManager() {
 
       <div style={{ marginBottom: "10px" }}>
         <label><strong>Actuator 1:</strong>&nbsp;</label>
-        <select value={actuator1} onChange={e => setActuator1(e.target.value)}>
+        <select value={actuator1} onChange={(e) => setActuator1(e.target.value)}>
           <option value="ON">ON</option>
           <option value="OFF">OFF</option>
         </select>
@@ -178,7 +178,7 @@ export default function DashboardManager() {
 
       <div style={{ marginTop: "30px" }}>
         <label><strong>Actuator 2:</strong>&nbsp;</label>
-        <select value={actuator2} onChange={e => setActuator2(e.target.value)}>
+        <select value={actuator2} onChange={(e) => setActuator2(e.target.value)}>
           <option value="ON">ON</option>
           <option value="OFF">OFF</option>
         </select>
