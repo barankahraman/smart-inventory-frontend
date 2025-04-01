@@ -240,6 +240,21 @@ export default function DashboardManager() {
                 border: "1px solid #ccc"
               }}
             />
+            <button
+              onClick={() => sendModeUpdate("auto", threshold)}
+              style={{
+                marginTop: "10px",
+                marginLeft: "10px",
+                padding: "5px 12px",
+                backgroundColor: "#4CAF50",
+                color: "white",
+                border: "none",
+                borderRadius: "5px",
+                cursor: "pointer"
+              }}
+            >
+              ➤ Enter
+            </button>
           </div>
           )}
 
