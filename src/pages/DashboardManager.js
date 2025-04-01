@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const API_URL = process.env.REACT_APP_API_URL;
-const STREAM_URL = "http://70c3-139-179-55-129.ngrok-free.app"; // Replace with ngrok or your own stream URL
+const STREAM_URL = process.env.REACT_APP_API_URL ;
 
 
 
@@ -149,7 +149,7 @@ export default function DashboardManager() {
         {/* Live Stream */}
         <div>
           <h2>Live Camera</h2>
-          <img src={`${STREAM_URL}/video`} width="320" height="240" alt="Live Stream" />
+          <img src={`${STREAM_URL}/video_feed`} width="320" height="240" alt="Live Stream" />
         </div>
       </div>
     
