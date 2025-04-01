@@ -203,7 +203,7 @@ export default function DashboardManager() {
       {/* Quit Button */}
       <button 
         onClick={handleQuit} 
-        style={{ marginTop: "20px", padding: "10px 20px", background: "blue", color: "white" }}
+        style={{ marginTop: "20px", padding: "10px 20px", background: "red", color: "white" }}
       >
         Quit
       </button>
