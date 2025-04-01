@@ -8,8 +8,7 @@ export default function DashboardManager() {
   const navigate = useNavigate();
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [actuator1, setActuator1] = useState("OFF");
-  const [actuator2, setActuator2] = useState("OFF");
+  const [actuator, setActuator] = useState("OFF");
 
   const [stockWeights, setStockWeights] = useState({
     weight1: 0,
@@ -65,7 +64,7 @@ export default function DashboardManager() {
       const response = await fetch(`${API_URL}/api/send-command`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ actuator1, actuator2 }),
+        body: JSON.stringify({ actuator }),
       });
       const result = await response.json();
       alert("✅ Command sent to Raspberry Pi!");
@@ -166,14 +165,7 @@ export default function DashboardManager() {
         <h2>Send Manual Actuator Command</h2>
         <div>
           <label><strong>Actuator 1:</strong>&nbsp;</label>
-          <select value={actuator1} onChange={(e) => setActuator1(e.target.value)}>
-            <option value="ON">ON</option>
-            <option value="OFF">OFF</option>
-          </select>
-        </div>
-        <div style={{ marginTop: '10px' }}>
-          <label><strong>Actuator 2:</strong>&nbsp;</label>
-          <select value={actuator2} onChange={(e) => setActuator2(e.target.value)}>
+          <select value={actuator} onChange={(e) => setActuator(e.target.value)}>
             <option value="ON">ON</option>
             <option value="OFF">OFF</option>
           </select>
