@@ -1,13 +1,14 @@
-body {
-  margin: 0px;
-  height: 100vh; /* Full viewport height */
-  display: flex;
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
-  background-color: #508dde; /* Background */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  overflow-y: auto; /* ✅ allow vertical scrolling */
+  overflow-x: hidden; /* optional: prevent side scroll */
+  background-color: #508dde;
   font-family: Arial, sans-serif;
-  overflow: hidden; /* Prevent unwanted scrollbars */
 }
+
 
 .container {
   width: 450px; /* Reduce the width */

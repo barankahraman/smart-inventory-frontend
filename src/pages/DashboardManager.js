@@ -88,10 +88,9 @@ export default function DashboardManager() {
       maxWidth: '1200px',
       margin: '0 auto',
       minHeight: '100vh',
-      maxHeight: '100vh',
-      overflowY: 'auto',
+
     }}
-    
+
     >
       <h1 style={{ textAlign: 'center' }}>Manager Dashboard</h1>
       <p style={{ textAlign: 'center' }}>Manage inventory and view live camera feed:</p>
