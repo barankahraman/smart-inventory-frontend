@@ -243,7 +243,7 @@ export default function DashboardManager() {
                 const input = document.getElementById("thresholdInput");
                 const newValue = parseFloat(input.value);
 
-                if (!isNan(newValue)) {
+                if (!isNaN(newValue)) {
                   setThreshold(newValue);
                   sendModeUpdate("auto", newValue);
                   setSaveMessage("✅ Threshold saved!");
