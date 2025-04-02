@@ -87,7 +87,8 @@ export default function DashboardManager() {
         body: JSON.stringify({
           type: 'mode',
           mode: newMode,
-          threshold: newMode === 'auto' ? newThreshold : undefined
+          threshold: newMode === 'auto' ? newThreshold : undefined,
+          piId: 'sensor-pi-1'  // ✅ <- Add your sensor Pi's ID here
         })
       });
       console.log("✅ Mode updated on backend:", newMode);
@@ -95,6 +96,7 @@ export default function DashboardManager() {
       console.error("❌ Failed to update mode:", err);
     }
   };
+
 
 
   const handleQuit = () => {
