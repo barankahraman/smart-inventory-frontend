@@ -2,6 +2,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AuthPage from "./pages/AuthPage";
 import DashboardManager from "./pages/DashboardManager";
 import DashboardWorker from "./pages/DashboardWorker";
+import PrivateRoute from "./components/PrivateRoute";
+
 
 function App() {
   return (
