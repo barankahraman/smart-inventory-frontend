@@ -8,8 +8,22 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<AuthPage />} />
-        <Route path="/manager" element={<DashboardManager />} />
-        <Route path="/worker" element={<DashboardWorker />} />
+        <Route 
+          path="/manager" 
+          element={
+            <PrivateRoute>
+              <DashboardManager />
+            </PrivateRoute>
+          }
+        />
+        <Route 
+          path="/worker" 
+          element={
+            <PrivateRoute>
+              <DashboardWorker />
+            </PrivateRoute>
+          }
+        />
       </Routes>
     </BrowserRouter>
   );
