@@ -28,8 +28,10 @@ export default function DashboardWorker() {
   };
 
   const handleQuit = () => {
-    navigate("/");
+    localStorage.removeItem("user");
+    navigate("/", { replace: true }); // ✅ force redirect with replace
   };
+
 
   return (
     <div style={{ textAlign: "center", padding: "40px" }}>
