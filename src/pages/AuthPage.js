@@ -22,6 +22,8 @@ export default function AuthPage() {
       if (response.ok) {
         setError("");
 
+        localStorage.setItem("user", username);
+
         // Redirect user based on their role
         if (username === "manager") {
           navigate("/manager");
