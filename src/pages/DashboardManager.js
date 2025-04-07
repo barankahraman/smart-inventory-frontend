@@ -100,8 +100,10 @@ export default function DashboardManager() {
 
 
   const handleQuit = () => {
-    navigate('/');
+    localStorage.removeItem("user");
+    navigate("/", { replace: true }); // ✅ force redirect with replace
   };
+
 
   return (
     
