@@ -72,6 +72,9 @@ export default function DashboardManager() {
       });
       const result = await response.json();
       console.log("Response:", result);
+
+      setSaveMessage("✅ Command sent to Raspberry Pi!");
+      setTimeout(() => setSaveMessage(""), 2000);
     } catch (error) {
       console.error("❌ Failed to send actuator command:", error);
     }
@@ -309,6 +312,12 @@ export default function DashboardManager() {
         >
           🚀 Send Command to Pi
         </button>
+        {/* Show message here */}
+        {mode === "manual" && saveMessage && (
+          <p style={{ marginTop: "10px", color: "white", fontWeight: "bold" }}>
+            {saveMessage}
+          </p>
+        )}
       </div>
   
       {/* Quit Button */}
