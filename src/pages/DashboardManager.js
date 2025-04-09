@@ -71,11 +71,9 @@ export default function DashboardManager() {
         body: JSON.stringify({ actuator }),
       });
       const result = await response.json();
-      alert("✅ Command sent to Raspberry Pi!");
       console.log("Response:", result);
     } catch (error) {
       console.error("❌ Failed to send actuator command:", error);
-      alert("❌ Failed to send actuator command.");
     }
   };
   
