@@ -22,6 +22,17 @@ export default function DashboardManager() {
   });
 
   useEffect(() => {
+    const fetchInitialMode = async () => {
+      const res = await fetch(`${API_URL}/api/mode`);
+      const data = await res.json();
+      setMode(data.mode);
+      setThreshold(data.threshold);
+    };
+
+    fetchInitialMode();
+  }, []);
+
+  useEffect(() => {
     const ws = new WebSocket(API_URL.replace("https://", "wss://") + "/ws/updates");
 
     ws.onmessage = (event) => {
