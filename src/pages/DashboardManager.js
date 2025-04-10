@@ -320,7 +320,7 @@ export default function DashboardManager() {
         <h2>Send Manual Actuator Command</h2>
         <div>
           <label><strong>Actuator:</strong>&nbsp;</label>
-          <select value={actuator} onChange={(e) => setActuator(e.target.value)} disabled={mode == "auto"}>
+          <select key={actuator} value={actuator} onChange={(e) => setActuator(e.target.value)} disabled={mode == "auto"}>
             <option value="ON">ON</option>
             <option value="OFF">OFF</option>
           </select>
