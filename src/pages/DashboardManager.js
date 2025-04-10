@@ -98,7 +98,7 @@ export default function DashboardManager() {
       const response = await fetch(`${API_URL}/api/send-command`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ actuator }),
+        body: JSON.stringify({ actuator: value }),
       });
       const result = await response.json();
       console.log("Response:", result);
