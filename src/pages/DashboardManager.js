@@ -10,7 +10,7 @@ export default function DashboardManager() {
   const [loading, setLoading] = useState(true);
   const [actuator, setActuator] = useState("OFF");
   const [mode, setMode] = useState("manual");
-  const [threshold, setThreshold] = useState(26);
+  const [threshold, setThreshold] = useState(null);
   const [saveMessage, setSaveMessage] = useState("");
 
 
