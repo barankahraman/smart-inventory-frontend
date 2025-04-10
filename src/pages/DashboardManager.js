@@ -92,7 +92,8 @@ export default function DashboardManager() {
     }
   };
 
-  const sendActuatorCommand = async () => {
+  const sendActuatorCommand = async (value) => {
+    setActuator(value);
     try {
       const response = await fetch(`${API_URL}/api/send-command`, {
         method: 'POST',
@@ -322,7 +323,7 @@ export default function DashboardManager() {
           <label><strong>Actuator:</strong>&nbsp;</label>
           <div style={{ display: "flex", gap: "10px", marginTop: "8px" }}>
             <button
-              onClick={() => handleActuatorChange("ON")}
+              onClick={() => sendActuatorCommand("ON")}
               disabled={mode === "auto"}
               style={{
                 backgroundColor: "green",
@@ -337,7 +338,7 @@ export default function DashboardManager() {
             </button>
             
             <button
-              onClick={() => handleActuatorChange("OFF")}
+              onClick={() => sendActuatorCommand("OFF")}
               disabled={mode === "auto"}
               style={{
                 backgroundColor: "red",
