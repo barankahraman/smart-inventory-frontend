@@ -22,7 +22,7 @@ export default function DashboardManager() {
   });
 
   useEffect(() => {
-    const ws = new WebSocket($"wss://{API_URL}/ws/updates");
+    const ws = new WebSocket(API_URL.replace("https://", "wss://") + "/ws/updates");
 
     ws.onmessage = (event) => {
       const data = JSON.parse(event.data)
