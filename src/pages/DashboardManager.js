@@ -22,6 +22,24 @@ export default function DashboardManager() {
   });
 
   useEffect(() => {
+    const ws = new WebSocket($"wss://{API_URL}/ws/updates");
+
+    ws.onmessage = (event) => {
+      const data = JSON.parse(event.data)
+
+      if (data.type === "mode_update") {
+        setMode(data.mode);
+        setThreshold(data.threshold || 26);
+      }
+      else if (data.type === "actuator_update") {
+        setActuator(data.actuator);
+      }
+    };
+
+    return () => ws.close();
+  }, []);
+
+  useEffect(() => {
     const fetchWarehouseData = async () => {
       try {
         const res = await fetch(`${API_URL}/api/sensor-data`);
