@@ -320,34 +320,43 @@ export default function DashboardManager() {
         <h2>Send Manual Actuator Command</h2>
         <div>
           <label><strong>Actuator:</strong>&nbsp;</label>
-          <select
-            value={actuator || ""}
-            onChange={(e) => setActuator(e.target.value)}
-            disabled={mode === "auto"}
-            autoComplete="off"
-          >
-            <option value="">-- Select --</option>
-            <option value="ON">ON</option>
-            <option value="OFF">OFF</option>
-          </select>
+          <div style={{ display: "flex", gap: "10px", marginTop: "8px" }}>
+            <button
+              onClick={() => handleActuatorChange("ON")}
+              disabled={mode === "auto"}
+              style={{
+                backgroundColor: "green",
+                color: "white",
+                padding: "8px 16px",
+                border: "none",
+                borderRadius: "5px",
+                cursor: mode === "auto" ? "not-allowed" : "pointer"
+              }}
+            >
+              ON
+            </button>
+            
+            <button
+              onClick={() => handleActuatorChange("OFF")}
+              disabled={mode === "auto"}
+              style={{
+                backgroundColor: "red",
+                color: "white",
+                padding: "8px 16px",
+                border: "none",
+                borderRadius: "5px",
+                cursor: mode === "auto" ? "not-allowed" : "pointer"
+              }}
+            >
+              OFF
+            </button>
+            </div>
+            
+            <p style={{ marginTop: "10px" }}>
+            <strong>Current Actuator State:</strong> {actuator}
+            </p>
         </div>
 
-        <button
-          onClick={sendActuatorCommand}
-          disabled={mode == "auto"}
-          style={{
-            marginTop: '15px',
-            backgroundColor: mode === "auto" ? "#999" : "#4CAF50",
-            color: "white",
-            padding: "10px 20px",
-            fontSize: "16px",
-            border: "none",
-            borderRadius: "5px",
-            cursor: mode === "auto" ? "not-allowed" : "pointer"
-          }}
-        >
-          🚀 Send Command to Pi
-        </button>
         {/* Show message here */}
         {mode === "manual" && saveMessage && (
           <p style={{ marginTop: "10px", color: "white", fontWeight: "bold" }}>
