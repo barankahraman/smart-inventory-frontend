@@ -214,6 +214,7 @@ export default function DashboardManager() {
           <li><strong>2nd Stock Weight:</strong> {stockWeights.weight2} kg</li>
           <li><strong>3rd Stock Weight:</strong> {stockWeights.weight3} kg</li>
           <li><strong>Temperature:</strong> {stockWeights.temperature} °C</li>
+          <li><strong>Humidity:</strong> {stockWeights.humidity} %</li>
         </ul>
       </div>
 
