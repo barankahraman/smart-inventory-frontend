@@ -45,6 +45,13 @@ export default function DashboardManager() {
       else if (data.type === "actuator_update") {
         setActuator(data.actuator);
       }
+      else if (data.type === "stock_update") {
+        setItems(prevItems =>
+          prevItems.map(item =>
+            item.name === data.item ? { ...item, stock: data.newStock } : item
+          )
+        );
+      }
     };
 
     return () => ws.close();
