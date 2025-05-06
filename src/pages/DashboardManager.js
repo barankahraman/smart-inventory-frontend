@@ -217,11 +217,11 @@ export default function DashboardManager() {
       <div style={{ marginTop: '30px' }}>
         <h2>Warehouse Sensor Data</h2>
         <ul>
-          <li><strong>1st Stock Weight:</strong> {stockWeights.weight1} kg</li>
-          <li><strong>2nd Stock Weight:</strong> {stockWeights.weight2} kg</li>
-          <li><strong>3rd Stock Weight:</strong> {stockWeights.weight3} kg</li>
-          <li><strong>Temperature:</strong> {stockWeights.temperature} °C</li>
-          <li><strong>Humidity:</strong> {stockWeights.humidity} %</li>
+          <li><strong>1st Stock Weight:</strong> {stockWeights.weight1 ?? '---'} kg</li>
+          <li><strong>2nd Stock Weight:</strong> {stockWeights.weight2 ?? '---'} kg</li>
+          <li><strong>3rd Stock Weight:</strong> {stockWeights.weight3 ?? '---'} kg</li>
+          <li><strong>Temperature:</strong> {stockWeights.temperature ?? '---'} °C</li>
+          <li><strong>Humidity:</strong> {stockWeights.humidity ?? '---'} %</li>
         </ul>
       </div>
 
