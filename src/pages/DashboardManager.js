@@ -68,8 +68,20 @@ export default function DashboardManager() {
       }
     };
 
+    const fetchInitialMode = async () => {
+      try {
+        const res = await fetch(`${API_URL}/api/mode`);
+        const data = await res.json();
+        setMode(data.mode);
+        setThreshold(data.threshold || 26);
+      } catch (error) {
+        console.log("Failed to fetch mode config", error);
+      }
+    };
+
     fetchItems();
     fetchWarehouseData();
+    fetchInitialMode();
     const interval = setInterval(fetchWarehouseData, 5000);
     return () => clearInterval(interval);
   }, []);
@@ -270,7 +282,8 @@ export default function DashboardManager() {
             <label><strong>Temperature Threshold (°C):</strong></label>
             <input
               type="number"
-              defaultValue={threshold}
+              value={threshold}
+              onChange={(e) => setThreshold(parseFloat(e.target.value))}
               id = "thresholdInput"
               placeholder = "Enter new threshold"
               style={{
